@@ -1,0 +1,92 @@
+:root {
+  --bg: #fafafa;
+  --fg: #1c1c1e;
+  --muted: #6b6b70;
+  --line: #d4d4d8;
+  --accent: #2456d6;
+  --accent-fg: #fff;
+  --surface: #fff;
+  --error: #b42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214;
+    --fg: #ececf0;
+    --muted: #9a9aa2;
+    --line: #35353b;
+    --accent: #6d94f5;
+    --accent-fg: #101012;
+    --surface: #1b1b1f;
+    --error: #ff8a80;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main { max-width: 52rem; margin: 0 auto; padding: 2rem 1rem 1rem; }
+h1 { margin: 0 0 .25rem; font-size: 1.75rem; }
+.lead { margin: 0 0 1.5rem; color: var(--muted); }
+
+label { display: block; margin: 1rem 0 .25rem; font-weight: 600; }
+
+textarea, input[type="url"] {
+  width: 100%;
+  padding: .6rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: inherit;
+  font: 14px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+textarea { min-height: 14rem; resize: vertical; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+button {
+  margin-top: .75rem;
+  padding: .5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+
+.tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--line); }
+.tabs button {
+  margin: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 6px 6px 0 0;
+  background: none;
+}
+.tabs button[aria-selected="true"] { border-bottom-color: var(--accent); font-weight: 600; }
+
+.dropzone {
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  text-align: center;
+}
+.dropzone.over { border-color: var(--accent); background: var(--surface); }
+.dropzone p { margin: 0 0 .75rem; }
+
+.hint { margin: .5rem 0 0; color: var(--muted); font-size: .9rem; }
+.status { min-height: 1.5rem; margin: 1rem 0 0; color: var(--muted); }
+.status.error { color: var(--error); }
+.actions { display: flex; gap: .5rem; }
+
+footer { max-width: 52rem; margin: 0 auto; padding: 1rem; color: var(--muted); font-size: .9rem; }
+footer a { color: inherit; }

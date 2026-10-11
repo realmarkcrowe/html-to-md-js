@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML to Markdown</title>
+  <meta name="description" content="Convert HTML to Markdown by pasting it, fetching a URL, or uploading a file. Runs entirely in your browser.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>HTML to Markdown</h1>
+    <p class="lead">Paste HTML, fetch a URL, or upload a file. Conversion happens in your browser. Nothing is sent to a server.</p>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="paste" aria-selected="true">Paste HTML</button>
+      <button role="tab" data-tab="url" aria-selected="false">From URL</button>
+      <button role="tab" data-tab="file" aria-selected="false">Upload file</button>
+    </div>
+
+    <section id="panel-paste">
+      <label for="html-input">HTML</label>
+      <textarea id="html-input" spellcheck="false" placeholder="Paste raw HTML here"></textarea>
+      <button id="convert-paste" class="primary">Convert</button>
+    </section>
+
+    <section id="panel-url" hidden>
+      <label for="url-input">Page address</label>
+      <input id="url-input" type="url" placeholder="https://example.com/page.html">
+      <p class="hint">Many sites block this kind of request (CORS). If it fails, use Paste or Upload instead.</p>
+      <button id="convert-url" class="primary">Fetch and convert</button>
+    </section>
+
+    <section id="panel-file" hidden>
+      <div id="dropzone" class="dropzone">
+        <p>Drop an .html file here, or choose one.</p>
+        <input id="file-input" type="file" accept=".html,.htm,.xhtml,text/html">
+      </div>
+      <p class="hint">Use this for large pages or sites that cannot be fetched.</p>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <label for="output">Markdown</label>
+    <textarea id="output" spellcheck="false" readonly placeholder="Converted Markdown appears here"></textarea>
+    <div class="actions">
+      <button id="copy" class="primary">Copy</button>
+      <button id="download">Download .md</button>
+      <button id="clear">Clear</button>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://github.com/realmarkcrowe/html-to-md-js">Source on GitHub</a>
+  </footer>
+
+  <script src="js/vendor/turndown.js"></script>
+  <script src="js/vendor/turndown-plugin-gfm.js"></script>
+  <script src="js/converter.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
